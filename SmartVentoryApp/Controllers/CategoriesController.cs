@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartVentoryApp.Application.Commands.CreateCategory;
+using SmartVentoryApp.Application.Queries.GetAllCategories;
 
 namespace SmartVentoryApp.Controllers
 {
@@ -22,5 +23,11 @@ namespace SmartVentoryApp.Controllers
                 var id = await _mediator.Send(command);
                 return Ok(new { id });
             }
+            [HttpGet]
+            public async Task<IActionResult> GetAll()
+            {
+                var categories = await _mediator.Send(new GetAllCategoriesQuery());
+                return Ok(categories);
+        }
     }
 }
