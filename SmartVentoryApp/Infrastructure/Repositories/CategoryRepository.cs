@@ -23,5 +23,20 @@ namespace SmartVentoryApp.Infrastructure.Repositories
         {
             return await _context.Categories.ToListAsync();
         }
+        public async Task<Category?> GetByIdAsync(int id)
+        {
+            return await _context.Categories.FindAsync(id);
+        }
+
+        public async Task UpdateAsync(Category category)
+        {
+            _context.Categories.Update(category);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteAsync(Category category)
+        {
+            _context.Categories.Remove(category);
+            await _context.SaveChangesAsync();
+        }
     }
 }
