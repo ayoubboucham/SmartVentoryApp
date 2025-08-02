@@ -1,0 +1,6 @@
+@SmartVentoryApp_HostAddress = http://localhost:5065
+
+GET {{SmartVentoryApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
