@@ -167,4 +167,6 @@ C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\obj\Debug\net9.0\refint\Smar
 C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\obj\Debug\net9.0\SmartVentoryApp.pdb
 C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\obj\Debug\net9.0\SmartVentoryApp.genruntimeconfig.cache
 C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\obj\Debug\net9.0\ref\SmartVentoryApp.dll
-C:\Users\hp\Desktop\SmartVentoryApp\SmartVentoryApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\bin\Debug\net9.0\FluentValidation.dll
+C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+C:\Users\hp\Desktop\SmartVentoryApp\smartventoryapp\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll

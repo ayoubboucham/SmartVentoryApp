@@ -1,4 +1,5 @@
 
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmartVentoryApp.Application.Commands.CreateCategory;
@@ -18,7 +19,6 @@ namespace SmartVentoryApp
 
 
 
-            builder.Services.AddControllers();
             builder.Services.AddOpenApi();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
@@ -29,6 +29,9 @@ namespace SmartVentoryApp
             {
                 options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
                 options.JsonSerializerOptions.WriteIndented = true;
+            }).AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssemblyContaining<CreateCategoryCommandValidator>();
             });
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
