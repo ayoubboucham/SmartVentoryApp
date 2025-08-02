@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartVentoryApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d847ff7b0633c03369ee707b7429bb4f2e4870f1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf6c80f251ace2d1ec65a839f0129b06e90477ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartVentoryApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartVentoryApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
