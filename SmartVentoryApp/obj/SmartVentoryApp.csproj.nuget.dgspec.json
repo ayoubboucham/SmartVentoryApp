@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\SmartVentoryApp\\SmartVentoryApp.csproj": {}
+    "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\smartventoryapp\\SmartVentoryApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\SmartVentoryApp\\SmartVentoryApp.csproj": {
+    "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\smartventoryapp\\SmartVentoryApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\SmartVentoryApp\\SmartVentoryApp.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\smartventoryapp\\SmartVentoryApp.csproj",
         "projectName": "SmartVentoryApp",
-        "projectPath": "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\SmartVentoryApp\\SmartVentoryApp.csproj",
+        "projectPath": "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\smartventoryapp\\SmartVentoryApp.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\SmartVentoryApp\\obj\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\SmartVentoryApp\\smartventoryapp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -51,9 +51,31 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.3, )"
             }
           },
           "imports": [
