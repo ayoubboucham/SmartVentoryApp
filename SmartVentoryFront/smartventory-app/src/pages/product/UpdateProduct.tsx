@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getProductById, updateProduct } from '../services/productService';
-import { Product } from '../models/Product';
+import { getProductById, updateProduct } from '../../services/productService';
+import { Product } from '../../models/Product';
+import { getAllCategories } from '../../services/categoryService';
+import { Category } from '../../models/Category';
+
+
+
 
 const UpdateProduct = () => {
   const { id: idParam } = useParams<{ id: string }>();
@@ -12,8 +17,12 @@ const UpdateProduct = () => {
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [categoryId, setCategoryId] = useState(0);
-
+  const [categories, setCategories] = useState<Category[]>([]);
   useEffect(() => {
+    getAllCategories().then(setCategories).catch((err) => {
+      console.error(err);
+      alert('Failed to load categories');
+    });
     if (!idParam) return;
 
     const parsedId = Number(idParam);
@@ -82,13 +91,19 @@ const UpdateProduct = () => {
           />
         </div>
         <div>
-          <label>Category ID</label>
-          <input
-            type="number"
+          <label>Category</label>
+          <select
             value={categoryId}
             onChange={(e) => setCategoryId(Number(e.target.value))}
             required
-          />
+            >
+            <option value="">-- Select Category --</option>
+            {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>
+                {cat.name}
+                </option>
+            ))}
+            </select>
         </div>
         <button type="submit">
             Update

@@ -1,18 +1,24 @@
 import { useEffect, useState } from 'react';
-import { getAllProducts,deleteProduct } from '../services/productService';
-import { Product } from '../models/Product';
+import { getAllProducts,deleteProduct } from '../../services/productService';
+import { Product } from '../../models/Product';
 import { Link } from 'react-router-dom';
+import { Category } from '../../models/Category';
+import { getAllCategories } from '../../services/categoryService';
 
 const ProductList = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  const loadProducts = async () => {
-    const data = await getAllProducts();
-    setProducts(data);
+  const loadData = async () => {
+    const productsData = await getAllProducts();
+    const categoriesData = await getAllCategories();
+    console.log(categoriesData);
+    setProducts(productsData);
+    setCategories(categoriesData);
   };
 
   useEffect(() => {
-    loadProducts();
+    loadData();
   }, []);
 
   const handleDelete = async (id: number) => {
@@ -22,11 +28,15 @@ const ProductList = () => {
     try {
       await deleteProduct(id);
       alert('Product deleted');
-      loadProducts(); 
+      loadData(); 
     } catch (err) {
       console.error(err);
       alert('Error while deleting the product');
     }
+  };
+  const getCategoryName = (categoryId: number) => {
+    const category = categories.find((c) => c.id === categoryId);
+    return category?.name ? category.name : 'N/A';
   };
   return (
     <div>
@@ -49,9 +59,9 @@ const ProductList = () => {
               <td>{p.name}</td>
               <td>{p.price} DH</td>
               <td>{p.quantity}</td>
-              <td>{p.categoryId}</td>
+              <td>{getCategoryName(p.categoryId)}</td>
               <td>
-                <Link to={`/edit/${p.id}`}>Update</Link>
+                <Link to={`/edit/${p.id}`}>Edit</Link>
                 &nbsp;&nbsp;
                 <button
                   onClick={() => handleDelete(p.id)}
