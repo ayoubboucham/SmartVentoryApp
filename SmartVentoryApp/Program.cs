@@ -41,8 +41,17 @@ namespace SmartVentoryApp
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddMediatR(typeof(CreateCategoryCommand).Assembly);
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             var app = builder.Build();
+            app.UseCors("AllowFrontend");
 
             if (app.Environment.IsDevelopment())
             {
