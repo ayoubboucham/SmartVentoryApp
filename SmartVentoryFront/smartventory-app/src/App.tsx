@@ -7,6 +7,7 @@ import CategoryList from './pages/Category/CategoryList';
 import CreateCategory from './pages/Category/CreateCategory';
 import UpdateCategory from './pages/Category/UpdateCategory';
 import CategoryDetails from './pages/Category/CategoryDetails';
+import StatsPage from './pages/stats/StatsPage';
 
 function App() {
   return (
@@ -33,6 +34,16 @@ function App() {
           >
             Categories
           </NavLink>
+          <NavLink
+            to="/stats"
+            className={({ isActive }) =>
+              isActive
+                ? 'pb-2 border-b-2 border-black font-semibold'
+                : 'pb-2 text-gray-600 hover:text-black'
+            }
+          >
+            Stats
+          </NavLink>
         </nav>
 
         <Routes>
@@ -45,6 +56,9 @@ function App() {
           <Route path="/categories/create" element={<CreateCategory />} />
           <Route path="/categories/edit/:id" element={<UpdateCategory />} />
           <Route path="/categories/details/:id" element={<CategoryDetails />} />
+
+          
+          <Route path="/stats" element={<StatsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
