@@ -30,33 +30,48 @@ const CategoryList = () => {
   };
 
   return (
-    <div>
-      <h1>Category List</h1>
-      <Link to="/categories/create">Add Category</Link>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categories.map((cat) => (
-            <tr key={cat.id}>
-              <td>{cat.id}</td>
-              <td>{cat.name}</td>
-              <td>
-                <Link to={`/categories/edit/${cat.id}`}>Edit</Link> &nbsp;&nbsp;
-                <button onClick={() => handleDelete(cat.id)}>Delete</button> &nbsp;&nbsp;
-                <Link to={`/categories/details/${cat.id}`}>Details</Link>
-              </td>
+    <div className="bg-white rounded-xl shadow p-6">
+      <h1 className="text-2xl font-bold mb-4">Categories</h1>
+  
+      <div className="mb-4">
+        <Link to="/categories/create" className="text-sm text-blue-600 hover:underline">
+          + Add Category
+        </Link>
+      </div>
+  
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm text-left">
+          <thead className="bg-gray-50 font-semibold text-gray-700">
+            <tr>
+              <th className="px-4 py-3">ID</th>
+              <th className="px-4 py-3">Name</th>
+              <th className="px-4 py-3">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {categories.map((cat) => (
+              <tr key={cat.id} className="hover:bg-gray-50">
+                <td className="px-4 py-2">{cat.id}</td>
+                <td className="px-4 py-2">{cat.name}</td>
+                <td className="px-4 py-2 space-x-2">
+                  <Link to={`/categories/edit/${cat.id}`} className="text-blue-600 hover:underline">
+                    Edit
+                  </Link>
+                  <button onClick={() => handleDelete(cat.id)} className="text-red-600 hover:underline">
+                    Delete
+                  </button>
+                  <Link to={`/categories/details/${cat.id}`} className="text-green-600 hover:underline">
+                    Details
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
+  
 };
 
 export default CategoryList;

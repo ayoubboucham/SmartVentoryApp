@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getCategoryById, updateCategory } from '../../services/categoryService';
 import { Category } from '../../models/Category';
 
@@ -35,19 +35,33 @@ const UpdateCategory = () => {
   if (!category) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h1>Edit Category</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input
-          value={category.name}
-          onChange={(e) => setCategory({ ...category, name: e.target.value })}
-          required
-        />
-        <button type="submit">Update</button>
+    <div className="bg-white rounded-xl shadow-sm p-6 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Edit Category</h1>
+      <div className="flex justify-end mb-4">
+      <Link to="/categories" className="text-sm text-blue-600 hover:underline">
+      ←   Back
+        </Link></div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="block mb-1 font-medium">Name</label>
+          <input
+            value={category.name}
+            onChange={(e) => setCategory({ ...category, name: e.target.value })}
+            required
+            className="w-full border border-gray-300 rounded px-3 py-2"
+          />
+        </div>
+  
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Update
+        </button>
       </form>
     </div>
   );
+  
 };
 
 export default UpdateCategory;

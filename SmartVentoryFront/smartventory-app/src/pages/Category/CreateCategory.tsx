@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createCategory } from '../../services/categoryService';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreateCategory = () => {
   const [name, setName] = useState('');
@@ -19,12 +19,28 @@ const CreateCategory = () => {
   };
 
   return (
-    <div>
-      <h1>Add Category</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input value={name} onChange={(e) => setName(e.target.value)} required />
-        <button type="submit">Add</button>
+    <div className="bg-white rounded-xl shadow-sm p-6 max-w-md mx-auto">
+      <h1 className="text-2xl font-bold mb-6">Add Category</h1>
+      <div className="flex justify-end mb-4">
+      <Link to="/categories" className="text-sm text-blue-600 hover:underline">
+      ←   Back
+        </Link></div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="block mb-1 font-medium">Name</label>
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full border border-gray-300 rounded px-3 py-2"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Add
+        </button>
       </form>
     </div>
   );

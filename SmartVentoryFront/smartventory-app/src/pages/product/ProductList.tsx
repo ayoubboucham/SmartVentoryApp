@@ -39,42 +39,50 @@ const ProductList = () => {
     return category?.name ? category.name : 'N/A';
   };
   return (
-    <div>
-      <h1>Liste Product</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Category</th>
-            <th>:</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((p) => (
-            <tr key={p.id}>
-              <td>{p.id}</td>
-              <td>{p.name}</td>
-              <td>{p.price} DH</td>
-              <td>{p.quantity}</td>
-              <td>{getCategoryName(p.categoryId)}</td>
-              <td>
-                <Link to={`/edit/${p.id}`}>Edit</Link>
-                &nbsp;&nbsp;
-                <button
-                  onClick={() => handleDelete(p.id)}
-                >
-                  Delete
-                </button>
-                &nbsp;&nbsp;
-                <Link to={`/product/${p.id}`}>Details</Link>
-              </td>
+    <div className="bg-white rounded-xl shadow p-6">
+      <h1 className="text-3xl font-bold mb-4">Products</h1>
+
+      <div className="mb-4">
+        <Link to="/create" className="text-sm text-blue-600 hover:underline">
+          + Add Product
+        </Link>
+      </div>
+
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm text-left">
+          <thead className="bg-gray-50 font-semibold text-gray-700">
+            <tr>
+              <th className="px-4 py-3">Name</th>
+              <th className="px-4 py-3">Price</th>
+              <th className="px-4 py-3">Quantity</th>
+              <th className="px-4 py-3">Category</th>
+              <th className="px-4 py-3"></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {products.map((p) => (
+              <tr key={p.id} className="hover:bg-gray-50">
+                <td className="px-4 py-2">{p.name}</td>
+                <td className="px-4 py-2">${p.price}</td>
+                <td className="px-4 py-2">{p.quantity}</td>
+                <td className="px-4 py-2">{getCategoryName(p.categoryId)}</td>
+                <td className="px-4 py-2 space-x-2">
+                  <Link to={`/edit/${p.id}`} className="text-blue-600 hover:underline">Edit</Link>
+                  <button
+                    onClick={() => handleDelete(p.id)}
+                    className="text-red-600 hover:underline"
+                  >
+                    Delete
+                  </button>
+                  <Link to={`/product/${p.id}`} className="text-green-600 hover:underline">
+                    Details
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
