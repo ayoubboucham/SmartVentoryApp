@@ -41,14 +41,14 @@ SmartVentoryApp/
 
 ### Backend (.NET API)
 ```bash
-cd SmartVentoryApp.Api
+cd SmartVentoryApp
 dotnet restore
 dotnet run
 ```
 
 ### Frontend (React)
 ```bash
-cd frontend
+cd SmartVentoryFront
 npm install
 npm run dev
 ```
