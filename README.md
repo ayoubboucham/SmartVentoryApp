@@ -35,7 +35,7 @@ SmartVentoryApp/
 ├── SmartventoryApp.Tests Testing
 ├── docker-compose.yml # Compose file (optional)
 └── README.md
-
+![Stats Page](./Screenshots/structure.png)
 
 ## 🧪 Run Locally (Development)
 
@@ -89,6 +89,13 @@ FluentValidation for input validation
 ### CORS
 CORS is enabled for frontend-backend communication.
 
+## 🖼️ UI Preview
+![CRUD Page](./Screenshots/list_product.png)
+![CRUD Page](./Screenshots/edit_product.png)
+![Stats Page](./Screenshots/dash4.png)
+![Stats Page](./Screenshots/dash3.png)
+![Stats Page](./Screenshots/dash2.png)
+![Stats Page](./Screenshots/dash1.png)
 ## Author
 Developed by Ayoub Boucham 
 
