@@ -58,12 +58,12 @@ npm run dev
 docker-compose up --build
 ```
 
-### Features
+## Features
 Full CRUD for Products and Categories
 
 Unified design with TailwindCSS
 
-## Statistics Dashboard
+### Statistics Dashboard
 Total KPIs:
 
 Total Products
@@ -81,12 +81,12 @@ Bar Chart: Stock Value per Category
 
 All data fetched from the API
 
-## Tests
+### Tests
 Unit testing with xUnit and Moq
 
 FluentValidation for input validation
 
-## CORS
+### CORS
 CORS is enabled for frontend-backend communication.
 
 ## Author
@@ -98,4 +98,4 @@ Use Docker Compose for seamless full-stack deployment.
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE) — free to use, modify, and distribute.
+This project is licensed under the [MIT License] — free to use, modify, and distribute.
