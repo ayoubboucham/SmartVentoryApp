@@ -44,17 +44,21 @@ SmartVentoryApp/
 cd SmartVentoryApp.Api
 dotnet restore
 dotnet run
+```
 
 ### Frontend (React)
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
-###Docker
+### Docker
+```bash
 docker-compose up --build
+```
 
-
-## Features
+### Features
 Full CRUD for Products and Categories
 
 Unified design with TailwindCSS
