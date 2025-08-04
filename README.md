@@ -48,7 +48,7 @@ dotnet run
 
 ### Frontend (React)
 ```bash
-cd SmartVentoryFront
+cd SmartVentoryFront/smartventory-app
 npm install
 npm run dev
 ```
