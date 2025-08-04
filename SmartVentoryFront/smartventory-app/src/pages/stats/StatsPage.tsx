@@ -18,35 +18,49 @@ import {
 import { Link } from 'react-router-dom';
 
 const StatsPage = () => {
+  // Local state to store all products from the API
   const [products, setProducts] = useState<Product[]>([]);
+
+  // Local state to store all categories from the API
   const [categories, setCategories] = useState<Category[]>([]);
 
+  // Load products and categories when the page is first loaded
   useEffect(() => {
     getAllProducts().then(setProducts);
     getAllCategories().then(setCategories);
   }, []);
 
+  // Total number of products
   const totalProducts = products.length;
+
+  // Total quantity of all products combined
   const totalQuantity = products.reduce((sum, p) => sum + p.quantity, 0);
+
+  // Total stock value (sum of price * quantity for each product)
   const stockValue = products.reduce((sum, p) => sum + p.price * p.quantity, 0);
 
-const productsPerCategory = categories.map((cat) => ({
-  name: cat.name,
-  value: products.filter(p => p.categoryId === cat.id).length,
-}));
+  // Prepare data for PieChart: number of products in each category
+  const productsPerCategory = categories.map((cat) => ({
+    name: cat.name,
+    value: products.filter(p => p.categoryId === cat.id).length,
+  }));
 
-const quantityPerCategory = categories.map((cat) => ({
-  name: cat.name,
-  quantity: products
-    .filter(p => p.categoryId === cat.id)
-    .reduce((sum, p) => sum + p.quantity, 0),
-}));
-const stockValuePerCategory = categories.map((cat) => ({
+  // Prepare data for BarChart: total quantity per category
+  const quantityPerCategory = categories.map((cat) => ({
+    name: cat.name,
+    quantity: products
+      .filter(p => p.categoryId === cat.id)
+      .reduce((sum, p) => sum + p.quantity, 0),
+  }));
+
+  // Prepare data for BarChart: total stock value per category
+  const stockValuePerCategory = categories.map((cat) => ({
     name: cat.name,
     value: products
       .filter((p) => p.categoryId === cat.id)
       .reduce((sum, p) => sum + p.price * p.quantity, 0),
   }));
+
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8E44AD', '#FF6B6B'];
 

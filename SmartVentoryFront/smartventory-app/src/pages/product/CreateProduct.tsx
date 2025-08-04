@@ -11,28 +11,38 @@ const CreateProduct = () => {
   const [categoryId, setCategoryId] = useState(0);
   const [categories, setCategories] = useState<Category[]>([]);
   
-  useEffect(() => {
-    getAllCategories().then(setCategories).catch((err) => {
+  // When the component loads, fetch the list of categories from the backend
+useEffect(() => {
+  getAllCategories()
+    .then(setCategories)
+    .catch((err) => {
       console.error(err);
       alert('Failed to load categories');
     });
-  }, []);
+}, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(categoryId);
-    try {
-      await createProduct({ name, price,quantity, categoryId });
-      alert('Product added successfully');
-      setName('');
-      setPrice(0);
-      setQuantity(0);
-      setCategoryId(0);
-    } catch (err) {
-      console.error(err);
-      alert('Error while adding the product');
-    }
-  };
+// Handle the form submission when user tries to add a new product
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault(); // Prevent default form submission behavior (page reload)
+
+  console.log(categoryId); 
+
+  try {
+    // Attempt to create a new product using the form values
+    await createProduct({ name, price, quantity, categoryId });
+
+    alert('Product added successfully');
+
+    // Reset the form fields after successful submission
+    setName('');
+    setPrice(0);
+    setQuantity(0);
+    setCategoryId(0);
+  } catch (err) {
+    console.error(err);
+    alert('Error while adding the product');
+  }
+};
 
   return (
     <div className="bg-white rounded-xl shadow-sm p-6 max-w-md mx-auto">

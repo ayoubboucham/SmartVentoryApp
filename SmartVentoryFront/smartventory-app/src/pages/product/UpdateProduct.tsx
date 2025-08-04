@@ -9,20 +9,31 @@ import { Category } from '../../models/Category';
 
 
 const UpdateProduct = () => {
+  // Get the product ID from the URL params
   const { id: idParam } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
+  // Local state for the product fields
   const [id, setId] = useState<number>(0);
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [quantity, setQuantity] = useState(0);
   const [categoryId, setCategoryId] = useState(0);
+
+  // List of categories (used for the dropdown)
   const [categories, setCategories] = useState<Category[]>([]);
+
+  // On component mount or when idParam changes, fetch data
   useEffect(() => {
-    getAllCategories().then(setCategories).catch((err) => {
-      console.error(err);
-      alert('Failed to load categories');
-    });
+    // First, load all categories to populate the dropdown
+    getAllCategories()
+      .then(setCategories)
+      .catch((err) => {
+        console.error(err);
+        alert('Failed to load categories');
+      });
+
+    // If there's no ID in the route, don't continue
     if (!idParam) return;
 
     const parsedId = Number(idParam);
@@ -31,16 +42,19 @@ const UpdateProduct = () => {
       return;
     }
 
+    // Fetch the product by ID and populate the form fields
     getProductById(parsedId).then((product) => {
       setId(product.id);
       setName(product.name);
       setPrice(product.price);
       setCategoryId(product.categoryId);
+      // Note: quantity is missing here – consider setting it too if it's relevant
     });
   }, [idParam]);
 
+  // Submit handler to update the product
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent full page reload
 
     try {
       const updatedProduct: Product = {
@@ -51,8 +65,12 @@ const UpdateProduct = () => {
         categoryId,
       };
 
+      // Send update request to the backend
       await updateProduct(id, updatedProduct);
+
       alert('Product updated successfully');
+
+      // Navigate back to the home or products list
       navigate('/');
     } catch (err) {
       console.error(err);

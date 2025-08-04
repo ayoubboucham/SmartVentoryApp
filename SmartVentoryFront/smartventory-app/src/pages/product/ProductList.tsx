@@ -6,21 +6,31 @@ import { Category } from '../../models/Category';
 import { getAllCategories } from '../../services/categoryService';
 
 const ProductList = () => {
+  // We store all products returned from the API in this state
   const [products, setProducts] = useState<Product[]>([]);
+
+  // We store the list of all categories to use them (e.g., showing category names)
   const [categories, setCategories] = useState<Category[]>([]);
 
+  // This function loads both products and categories from the backend
+  // It's called once when the component mounts, and again after deletion
   const loadData = async () => {
     const productsData = await getAllProducts();
     const categoriesData = await getAllCategories();
+
     console.log(categoriesData);
+
     setProducts(productsData);
     setCategories(categoriesData);
   };
 
+  // Load products and categories when the component first loads
   useEffect(() => {
     loadData();
   }, []);
 
+  // This function deletes a product after user confirms
+  // If deletion is successful, it refreshes the product list
   const handleDelete = async (id: number) => {
     const confirmed = window.confirm('Are you sure you want to delete this product?');
     if (!confirmed) return;
@@ -28,12 +38,15 @@ const ProductList = () => {
     try {
       await deleteProduct(id);
       alert('Product deleted');
+
+      // Refresh the data after successful deletion
       loadData(); 
     } catch (err) {
       console.error(err);
       alert('Error while deleting the product');
     }
   };
+
   const getCategoryName = (categoryId: number) => {
     const category = categories.find((c) => c.id === categoryId);
     return category?.name ? category.name : 'N/A';

@@ -7,29 +7,41 @@ import { Category } from '../../models/Category';
 
 
 const ProductDetails = () => {
+  // We extract the 'id' from the URL parameters
   const { id } = useParams<{ id: string }>();
+
+  // Local state to hold the product data once fetched
   const [product, setProduct] = useState<Product | null>(null);
+
+  // Local state to hold all categories, used to display the category name
   const [categories, setCategories] = useState<Category[]>([]);
 
+  // When the component mounts or the 'id' changes, we fetch product + category data
   useEffect(() => {
+    // If there's no ID in the URL, we can't fetch anything
     if (!id) return;
 
+    // Try to parse the ID into a number
     const parsedId = Number(id);
     if (isNaN(parsedId)) return;
 
+    // Fetch product details by ID
     getProductById(parsedId)
       .then(setProduct)
       .catch(() => alert('Product not found'));
 
+    // Fetch all categories to match category ID with its name
     getAllCategories()
       .then(setCategories)
       .catch(() => alert('Failed to load categories'));
   }, [id]);
 
+  // Helper function: Given a category ID, return the corresponding category name
   const getCategoryName = (categoryId: number) => {
     const category = categories.find(c => c.id === categoryId);
     return category ? category.name : 'N/A';
   };
+
 
   if (!product) return <p>Loading...</p>;
 
