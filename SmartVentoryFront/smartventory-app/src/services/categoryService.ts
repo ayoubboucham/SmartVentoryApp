@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { Category } from '../models/Category';
 
-const API_URL = 'http://localhost:5065/api/categories';
+// const API_URL = 'http://localhost:5065/api/categories';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/categories`;
 
 export const getAllCategories = async (): Promise<Category[]> => {
     const response = await axios.get<{ $values: Category[] }>(API_URL);

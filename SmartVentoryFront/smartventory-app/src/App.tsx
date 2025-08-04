@@ -3,10 +3,10 @@ import ProductList from './pages/product/ProductList';
 import CreateProduct from './pages/product/CreateProduct';
 import UpdateProduct from './pages/product/UpdateProduct';
 import ProductDetails from './pages/product/ProductDetails';
-import CategoryList from './pages/Category/CategoryList';
-import CreateCategory from './pages/Category/CreateCategory';
-import UpdateCategory from './pages/Category/UpdateCategory';
-import CategoryDetails from './pages/Category/CategoryDetails';
+import CategoryList from './pages/category/CategoryList';
+import CreateCategory from './pages/category/CreateCategory';
+import UpdateCategory from './pages/category/UpdateCategory';
+import CategoryDetails from './pages/category/CategoryDetails';
 import StatsPage from './pages/stats/StatsPage';
 
 function App() {

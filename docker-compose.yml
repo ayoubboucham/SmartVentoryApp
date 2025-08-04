@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: smartventory-sql
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    networks:
+      - smartventory-net
+
+  backend:
+    build:
+      context: ./SmartVentoryApp
+      dockerfile: Dockerfile
+    container_name: smartventory-backend
+    environment:
+      - SmartVentoryConnectionString=Server=sqlserver;Database=SmartVentoryDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;
+    ports:
+      - "5000:5000"
+    depends_on:
+      - sqlserver
+    networks:
+      - smartventory-net
+
+  frontend:
+    build:
+      context: ./SmartVentoryFront/smartventory-app
+      dockerfile: Dockerfile
+    container_name: smartventory-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - smartventory-net
+
+networks:
+  smartventory-net:
+    driver: bridge
