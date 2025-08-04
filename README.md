@@ -35,7 +35,7 @@ SmartVentoryApp/
 ├── SmartventoryApp.Tests Testing
 ├── docker-compose.yml # Compose file (optional)
 └── README.md
-![Stats Page](./Screenshots/structure.png)
+![Stats Page](./Screenshots/Diagram_page.jpg)
 
 ## 🧪 Run Locally (Development)
 
