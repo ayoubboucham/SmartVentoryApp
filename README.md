@@ -33,7 +33,7 @@ SmartVentoryApp/
 ├── SmartVentoryApp # .NET 9 Web API backend
 ├── SmartVentoryFront # React + Vite + Tailwind frontend
 ├── SmartventoryApp.Tests Testing
-├── docker-compose.yml # Compose file (optional)
+├── docker-compose.yml # Compose file 
 └── README.md
 ![Stats Page](./Screenshots/Diagram_page.jpg)
 
